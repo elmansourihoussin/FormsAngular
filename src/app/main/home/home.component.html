@@ -1,0 +1,69 @@
+<div class="container">
+    <div class="row mt-3">
+        <div class="card col-md-10 m-1">
+            <h3>Exemple </h3>
+        </div>
+        <div class="card col-md-10 m-1">
+
+            <form class="p-3" #form="ngForm">
+
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" name="name"  [(ngModel)]="user.nom" />
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="pass" [(ngModel)]="user.password" placeholder="Password">
+                </div>
+
+                <div class="form-group">
+                    <label for="testing">Testing</label>
+                    <input type="color" class="form-control" id="testing" name="testing" [(ngModel)]="user.couleur" placeholder="Testing">
+                </div>
+
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1" name="check1" [(ngModel)]="user.actif" />
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+            <!-- <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                </tr>
+                <tr>
+                    <td>123</td>
+                    <td>BLALAL</td>
+                    <td>Salmi</td>
+                </tr>
+                <tr>
+                    <td>123</td>
+                    <td>BLALAL</td>
+                    <td>Salmi</td>
+                </tr>
+                <tr>
+                    <td>123</td>
+                    <td>BLALAL</td>
+                    <td>Salmi</td>
+                </tr>
+                <tr>
+                    <td>123</td>
+                    <td>BLALAL</td>
+                    <td>Salmi</td>
+                </tr>
+            </table> -->
+        </div>
+        <div class="card col-md-10 p-2 m-1">
+            {{ user | json }}
+            <br> 
+            {{ form.value | json }}
+            <br>
+            {{ originalUser | json }}
+        </div>
+    </div>
+</div>

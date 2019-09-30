@@ -1,0 +1,85 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 card">
+            <form class="p-3" #form="ngForm" (ngSubmit)="onSubmit(form)"> <!-- ngNativeValidate> -->
+        
+                <!-- <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" 
+                           class="form-control"
+                           id="name"
+                           name="name"
+                           [(ngModel)]="user.nom"
+                           required
+                           #classTest/>
+                          -  pattern="B.*"
+                           minlength="3"
+                           maxlength="5" -
+
+                </div>
+
+                <h4> CSS classes for validition : {{classTest.className}}</h4>
+
+                <hr>
+
+                <div class="form-group">
+                        <label for="password">Name</label>
+                        <input type="text" 
+                               class="form-control"
+                               id="password"
+                               name="password"
+                               [(ngModel)]="user.password"
+                               required
+                               #propertyTest="ngModel"/>
+                            - pattern="B.*"
+                               minlength="3"
+                               maxlength="5" -
+                        <div [hidden]="propertyTest.valid || propertyTest.untouched"
+                             class="alert alert-danger">Entrer a name !</div>
+                    </div>
+                        <h4>Dirty : {{propertyTest.dirty}}</h4>
+                        <h4>pristine : {{propertyTest.pristine}}</h4>
+                        <h4>Touched : {{propertyTest.touched}}</h4>
+                        <h4>Untouched : {{propertyTest.untouched}}</h4>
+                        <h4>Valid : {{propertyTest.valid}}</h4>
+                        <h4>Invalid : {{propertyTest.invalid}}</h4> -->
+
+                        <div class="form-group">
+                                <label for="nom">Nom</label>
+                                <input type="text" 
+                                       class="form-control"
+                                       id="nom"
+                                       name="nom"
+                                       [(ngModel)]="user.nom"
+                                       required
+                                       #fieldName="ngModel"
+                                       (blur)="onBlur(fieldName)"
+                                       [class.field-error]="form.submitted && fieldName.invalid"/>
+                                    <!-- pattern="B.*"
+                                       minlength="3"
+                                       maxlength="5" -->
+                                <div [hidden]="!form.submitted || fieldName.valid"
+                                     class="alert alert-danger">Entrer a name !</div>
+                            </div>
+
+                <div class="form-group">
+                        <label for="name">Number</label>
+                        <input type="number" 
+                               class="form-control"
+                               id="number"
+                               name="number"
+                               min="3"
+                               max="100"/>
+                    </div>
+        
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
+        <div class="col-md-10 m-2">
+            <p></p>
+        </div>
+
+    </div>
+</div>

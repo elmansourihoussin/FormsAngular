@@ -1,0 +1,106 @@
+<div class="container">
+    <div class="row">
+        <div class="card col-md-10">
+            <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="p-3">
+               
+                <div class="form-group">
+                    <label for="nom">Nom</label>
+                    <input type="text" 
+                           class="form-control"
+                           id="nom"
+                           name="nom"
+                           [(ngModel)]="user.nom"
+                           required
+                           #fieldName="ngModel"
+                           [class.field-error]="form.submitted && fieldName.invalid"/>
+                        <!-- pattern="B.*"
+                           minlength="3"
+                           maxlength="5" -->
+                    <div [hidden]="!form.submitted || fieldName.valid"
+                         class="alert alert-danger">Entrer nom !</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="startDate">Date Naissance</label>
+                    <input type="text"
+                    id="startDate"
+                    name="startDate"
+                    [(ngModel)]="startDate"
+                    placeholder="Datepicker"
+                    class="form-control"
+                    bsDatepicker>
+                </div>
+
+                <div class="form-group">
+                    {{ startDate }}
+                </div>
+
+                <div class="form-group">
+                        <timepicker [(ngModel)]="startTime" name="startTime" id="startTime"></timepicker>
+                        <pre class="alert alert-info">Time is: {{startTime}}</pre>
+                </div>
+
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary" name="singleModel"
+                        [(ngModel)]="singleModel" btnCheckbox
+                        btnCheckboxTrue="Oui" btnCheckboxFalse="Non">
+                {{ singleModel }}
+                </button>
+                </div>
+
+                <div class="form-group">
+                    <select class="form-control">
+                        <option *ngFor="let item of items | async">{{ item }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="actif" name="actif" [(ngModel)]="user.actif" />
+                    <label class="form-check-label" for="actif">Actif</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="nom">Mot de passe</label>
+                    <input type="password" 
+                           class="form-control"
+                           id="password"
+                           name="password"
+                           [(ngModel)]="user.password"
+                           required
+                           #fieldName="ngModel"
+                           [class.field-error]="form.submitted && fieldName.invalid"/>
+                        <!-- pattern="B.*"
+                           minlength="3"
+                           maxlength="5" -->
+                    <div [hidden]="!form.submitted || fieldName.valid"
+                         class="alert alert-danger">Entrer  password !</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="nom">Couleur</label>
+                    <input type="color" 
+                           class="form-control"
+                           id="couleur"
+                           name="couleur"
+                           [(ngModel)]="user.couleur"
+                           required
+                           #fieldName="ngModel"
+                           [class.field-error]="form.submitted && fieldName.invalid"
+                           style="width: 50px"/>
+                        <!-- pattern="B.*"
+                           minlength="3"
+                           maxlength="5" -->
+                    <div [hidden]="!form.submitted || fieldName.valid"
+                         class="alert alert-danger">Entrer  couleur !</div>
+                </div>
+
+                <div [hidden]="!postError" class="alert alert-danger">
+                    {{postErrorMessage}}
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+
+            </form>
+        </div>
+    </div>
+</div>
